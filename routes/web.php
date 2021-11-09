@@ -25,3 +25,7 @@ Route::get('/checkout', function () {
     return view('checkout');
 });
 
+Route::get('/success/checkout', function () {
+    return view('success_checkout');
+});
+
