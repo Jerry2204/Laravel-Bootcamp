@@ -18,7 +18,7 @@ class AdminSeeder extends Seeder
     {
         User::create([
             'name' => 'Admin',
-            'email' => 'admin.laracamp.com',
+            'email' => 'admin@laracamp.com',
             'email_verified_at' => Date::now(),
             'password' => Hash::make('rahasia'),
             'is_admin' => true
