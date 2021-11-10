@@ -34,29 +34,41 @@
                             @csrf
                             <div class="mb-4">
                                 <label for="name" class="form-label">Full Name</label>
-                                <input name="name" type="text" value="{{ Auth::user()->name }}" class="form-control" id="name" disabled>
+                                <input required name="name" type="text" value="{{ Auth::user()->name }}" class="form-control" id="name" disabled>
                             </div>
                             <div class="mb-4">
                                 <label for="email" class="form-label">Email Address</label>
-                                <input name="email" type="email" class="form-control" id="email" value="{{ Auth::user()->email }}" disabled>
+                                <input required name="email" type="email" class="form-control" id="email" value="{{ Auth::user()->email }}" disabled>
                             </div>
                             <div class="mb-4">
                                 <label for="occupation" class="form-label">Occupation</label>
-                                <input name="occupation" type="text" class="form-control" id="occupation" value="{{ Auth::user()->occupation }}">
+                                <input required name="occupation" type="text" class="form-control {{ $errors->has('occupation') ? 'is-invalid' : '' }}" id="occupation" value="{{ old('occupation') ?: Auth::user()->occupation }}">
+                                @if ($errors->has('occupation'))
+                                <small class="text-danger">{{ $errors->first('occupation') }}</small>
+                                @endif
                             </div>
                             <div class="mb-4">
                                 <label for="card_number" class="form-label">Card Number</label>
-                                <input name="card_number" type="number" class="form-control" id="card_number">
+                                <input required name="card_number" type="number" class="form-control {{ $errors->has('card_number') ? 'is-invalid' : '' }}" id="card_number" value="{{ old('card_number') }}">
+                                @if ($errors->has('card_number'))
+                                <small class="text-danger">{{ $errors->first('card_number') }}</small>
+                                @endif
                             </div>
                             <div class="mb-5">
                                 <div class="row">
                                     <div class="col-lg-7 col-12">
                                         <label for="expired" class="form-label">Expired</label>
-                                        <input name="expired" type="month" class="form-control" id="expired">
+                                        <input required name="expired" type="month" class="form-control {{ $errors->has('expired') ? 'is-invalid' : '' }}" id="expired" value="{{ old('expired') }}">
+                                        @if ($errors->has('expired'))
+                                        <small class="text-danger">{{ $errors->first('expired') }}</small>
+                                        @endif
                                     </div>
                                     <div class="col-lg-5 col-12">
                                         <label for="cvc" class="form-label">CVC</label>
-                                        <input name="cvc" type="number" class="form-control" id="cvc" maxlength="3">
+                                        <input required name="cvc" type="number" class="form-control {{ $errors->has('cvc') ? 'is-invalid' : '' }}" id="cvc" maxlength="3" value="{{ old('cvc') }}">
+                                        @if ($errors->has('cvc'))
+                                        <small class="text-danger">{{ $errors->first('cvc') }}</small>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
