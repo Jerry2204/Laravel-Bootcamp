@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="banner mt-4">
+<section class="banner">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-11 col-12">
@@ -266,7 +266,7 @@
                                 <div class="clear"></div>
                             </div>
                             <p>
-                                <a href="#" class="btn btn-master btn-primary w-100 mt-3">
+                                <a href="{{ route('checkout', 'gigih-belajar') }}" class="btn btn-master btn-primary w-100 mt-3">
                                     Take This Plan
                                 </a>
                             </p>
@@ -312,7 +312,7 @@
                                 <div class="clear"></div>
                             </div>
                             <p>
-                                <a href="#" class="btn btn-master btn-secondary w-100 mt-3">
+                                <a href="{{ route('checkout', 'siap-belajar') }}" class="btn btn-master btn-secondary w-100 mt-3">
                                     Start With This Plan
                                 </a>
                             </p>

@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light fixed-top bg-white">
+<nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{{ route('welcome') }}">
             <img src="{{ asset('images/logo.png') }}" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -31,7 +31,7 @@
 
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="right: 0; left: auto">
                         <li>
-                            <a href="#" class="dropdown-item">My Dashboard</a>
+                            <a href="{{ route('user.dashboard') }}" class="dropdown-item">My Dashboard</a>
                         </li>
                         <li>
                             <a href="#" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Sign Out</a>
@@ -47,7 +47,7 @@
                 <a href="{{ route('login') }}" class="btn btn-master btn-secondary me-3">
                     Sign In
                 </a>
-                <a href="#" class="btn btn-master btn-primary">
+                <a href="{{ route('login') }}" class="btn btn-master btn-primary">
                     Sign Up
                 </a>
             </div>
