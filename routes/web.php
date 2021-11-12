@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\DashboardController as UserDashboard;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 
 /*
@@ -44,6 +45,9 @@ Route::middleware(['auth'])->group(function() {
     // admin dashboard
     Route::prefix('admin/dashboard')->namespace('Admin')->name('admin.')->middleware('ensureUserRole:admin')->group(function() {
         Route::get('/', [AdminDashboard::class, 'index'])->name('dashboard');
+
+        // checkout paid
+        Route::post('checkout/{checkout}', [AdminController::class, 'checkout_paid'])->name('paid');
     });
 });
 
