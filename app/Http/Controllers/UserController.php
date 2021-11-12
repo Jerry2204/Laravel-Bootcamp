@@ -41,10 +41,4 @@ class UserController extends Controller
 
         return redirect(route('welcome'));
     }
-
-    public function dashboard()
-    {
-        $checkouts = Checkout::with('camp')->whereUserId(Auth::id())->get();
-        return view('user.dashboard', compact('checkouts'));
-    }
 }
