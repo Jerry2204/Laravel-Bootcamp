@@ -63,6 +63,8 @@ class CheckoutController extends Controller
 
         $user = Auth::user();
         $user->occupation = $data['occupation'];
+        $user->phone = $data['phone'];
+        $user->address = $data['address'];
         $user->save();
 
         $checkout = Checkout::create($data);
@@ -164,7 +166,7 @@ class CheckoutController extends Controller
         $customer_details = [
             'first_name' => $checkout->user->name,
             'last_name' => '',
-            'email' => $checkout->user->name,
+            'email' => $checkout->user->email,
             'phone' => $checkout->user->phone,
             'billing_address' => $userData,
             'shipping_address' => $userData
@@ -184,13 +186,13 @@ class CheckoutController extends Controller
 
             return $paymentUrl;
         } catch(Exception $e) {
-            return false;
+            dd($e->getMessage());
         }
     }
 
     public function midtransCallback(Request $request)
     {
-        $notif = new Midtrans\Notification();
+        $notif = $request->method() == 'POST' ? new Midtrans\Notification() : Midtrans\Transaction::status($request->order_id);
 
         $transaction_status = $notif->transaction_status;
         $fraud = $notif->fraud_status;
