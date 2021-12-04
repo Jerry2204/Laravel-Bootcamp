@@ -48,29 +48,18 @@
                                 @endif
                             </div>
                             <div class="mb-4">
-                                <label for="card_number" class="form-label">Card Number</label>
-                                <input required name="card_number" type="number" class="form-control {{ $errors->has('card_number') ? 'is-invalid' : '' }}" id="card_number" value="{{ old('card_number') }}">
-                                @if ($errors->has('card_number'))
-                                <small class="text-danger">{{ $errors->first('card_number') }}</small>
+                                <label for="phone" class="form-label">Phone</label>
+                                <input required name="phone" type="text" class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" id="phone" value="{{ old('phone') ?: Auth::user()->phone }}">
+                                @if ($errors->has('phone'))
+                                <small class="text-danger">{{ $errors->first('phone') }}</small>
                                 @endif
                             </div>
-                            <div class="mb-5">
-                                <div class="row">
-                                    <div class="col-lg-7 col-12">
-                                        <label for="expired" class="form-label">Expired</label>
-                                        <input required name="expired" type="month" class="form-control {{ $errors->has('expired') ? 'is-invalid' : '' }}" id="expired" value="{{ old('expired') }}">
-                                        @if ($errors->has('expired'))
-                                        <small class="text-danger">{{ $errors->first('expired') }}</small>
-                                        @endif
-                                    </div>
-                                    <div class="col-lg-5 col-12">
-                                        <label for="cvc" class="form-label">CVC</label>
-                                        <input required name="cvc" type="number" class="form-control {{ $errors->has('cvc') ? 'is-invalid' : '' }}" id="cvc" maxlength="3" value="{{ old('cvc') }}">
-                                        @if ($errors->has('cvc'))
-                                        <small class="text-danger">{{ $errors->first('cvc') }}</small>
-                                        @endif
-                                    </div>
-                                </div>
+                            <div class="mb-4">
+                                <label for="address" class="form-label">Address</label>
+                                <input required name="address" type="text" class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" id="address" value="{{ old('address') ?: Auth::user()->address }}">
+                                @if ($errors->has('address'))
+                                <small class="text-danger">{{ $errors->first('address') }}</small>
+                                @endif
                             </div>
                             <button type="submit" class="w-100 btn btn-primary">Pay Now</button>
                             <p class="text-center subheader mt-4">
